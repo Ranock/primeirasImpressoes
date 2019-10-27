@@ -1,0 +1,56 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+especialidades:
+  path: /especialidades
+  controller: App\Controller\EspecialidadesController::findAll
+  methods: 
+    - GET
+especialidade:
+  path: /especialidade/{id}
+  controller: App\Controller\EspecialidadesController::getById
+  methods: 
+    - GET
+remove_especialidade:
+  path: /especialidade/{id}
+  controller: App\Controller\EspecialidadesController::delete
+  methods: 
+    - DELETE
+save_especialidade:
+  path: /especialidade
+  controller: App\Controller\EspecialidadesController::save
+  methods: 
+    - POST
+alter_especialidade:
+  path: /especialidade/{id}
+  controller: App\Controller\EspecialidadesController::alter
+  methods: 
+    - PUT
+medicos:
+  path: /medicos
+  controller: App\Controller\MedicoController::findAll
+  methods: 
+    - GET
+medico:
+  path: /medico/{id}
+  controller: App\Controller\MedicoController::getById
+  methods: 
+    - GET
+remove_medico:
+  path: /medico/{id}
+  controller: App\Controller\MedicoController::delete
+  methods: 
+    - DELETE
+save_medico:
+  path: /medicos
+  controller: App\Controller\MedicoController::save
+  methods: 
+    - POST
+alter_medico:
+  path: /medico/{id}
+  controller: App\Controller\MedicoController::alter
+  methods: 
+    - PUT
+
+
+

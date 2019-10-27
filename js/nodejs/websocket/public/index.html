@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chat websocket</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <form id="chat">
+            <input type="text" name="username">
+            <div class="messages"></div>
+            <input type="text", name="message">
+            <button type="submit">Enviar</button>
+        </form>
+        
+        <script type="text/javascript">
+            function renderMessage(message) {
+                $('.messages')
+                    .append('<div class="message"> <strong> ' + message.author + '</strong> : ' +message.message+ '</div>');
+
+                
+            }
+            let socket = io('http://localhost:3000');
+            $('#chat').submit( (event) =>{
+                event.preventDefault();
+                let author  = $('input[name=username]').val();
+                let message = $('input[name=message]').val();
+
+                let objectM = {
+                    author : author,
+                    message : message
+                };
+                renderMessage(objectM);
+                socket.emit('sendMessage', objectM);
+            })
+            socket.on('receivedMessage', (message)=>{
+                renderMessage(message);
+            });
+            socket.on('previousMesages', (messages)=>{
+                messages.forEach(x => renderMessage(x));
+            })
+        </script>
+    </body>
+</html>

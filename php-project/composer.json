@@ -1,0 +1,10 @@
+{
+    "name": "teste/composer",
+    "authors": [
+        {
+            "name": "Hugo Rabock",
+            "email": "hugo@hugo.com"
+        }
+    ],
+    "require": {}
+}
